@@ -80,11 +80,11 @@ def run_register_model(data_path: str, top_n: int):
         order_by=["metrics.test_rmse ASC"]
     )
     best_run = runs[0]
-    print(best_run)
+    #print(best_run)
     # Register the best model
     print(30*"_")
-    print(f"run id: {run.info.run_id}, rmse: {run.data.metrics}")
-    model_uri = f"runs:/{run.info.run_id}/model"
+    print(f"run id: {best_run.info.run_id}, rmse: {best_run.data.metrics}")
+    model_uri = f"runs:/{best_run.info.run_id}/model"
     mlflow.register_model(model_uri=model_uri, name="nyc-taxi-regressor")
     # mlflow.register_model( ... )
 
